@@ -1,5 +1,8 @@
 package com.libktx.game
 
+/**
+ * Configuration constants
+ */
 object Config {
     const val ServerPort = 5000
     const val TimerPort = 5001

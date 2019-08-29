@@ -19,9 +19,12 @@ import com.libktx.game.assets.get
 import com.libktx.game.lib.*
 import com.libktx.game.network.services.BombService
 import ktx.graphics.use
+import ktx.log.logger
 import ktx.vis.table
 import java.util.*
 import kotlin.math.max
+
+private val log = logger<Game>()
 
 /**
  * Config screen for the basic settings.
@@ -114,9 +117,17 @@ class BombConfigScreen(private val bombService: BombService,
             textButton("Read Bomb") {
                 setClickListener {
                     bombService.info { bombInfo ->
-                        bombScreen.text = bombInfo.screen
-                        countdown = bombInfo.time
-                        explosionTime.text = TimeFormatter.getFormattedDateAsTimeString(Date(bombInfo.time))
+
+                        if (bombInfo == null) {
+                            log.error { "Failed reading bomb" }
+                            bombScreen.text = "Reading failed"
+                            explosionTime.text = "00:00"
+                            countdown = 0
+                        } else {
+                            bombScreen.text = bombInfo.screen
+                            countdown = bombInfo.time
+                            explosionTime.text = TimeFormatter.getFormattedDateAsTimeString(Date(bombInfo.time))
+                        }
                     }
                 }
             }.cell(minWidth = 120f, minHeight = 45f, align = Align.right)

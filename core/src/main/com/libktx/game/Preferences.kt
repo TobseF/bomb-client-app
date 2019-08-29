@@ -4,6 +4,9 @@ import com.badlogic.gdx.Gdx
 import com.libktx.game.Preferences.PreferenceKey.*
 import kotlin.reflect.KProperty
 
+/**
+ * Mutable settings which are stored on filesystem
+ */
 object Preferences {
 
     private val preferences = Gdx.app.getPreferences(Config.appIdentifier)
@@ -74,6 +77,17 @@ object Preferences {
 
         operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Int) {
             preferences.putInteger(prefKey.name, value)
+        }
+    }
+
+    private class PreferenceBoolean(private val prefKey: PreferenceKey, val default: Boolean = false) {
+
+        operator fun getValue(thisRef: Any?, property: KProperty<*>): Boolean {
+            return preferences.getBoolean(prefKey.name, default)
+        }
+
+        operator fun setValue(thisRef: Any?, property: KProperty<*>, value: Boolean) {
+            preferences.putBoolean(prefKey.name, value)
         }
     }
 

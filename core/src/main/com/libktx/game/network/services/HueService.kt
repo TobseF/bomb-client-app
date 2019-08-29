@@ -30,7 +30,7 @@ class HueService {
     fun pair(): Boolean {
         val ipAddress = Preferences.hueIp
 
-        if (ipAddress == null) {
+        if (ipAddress.isEmpty()) {
             log.error { "No ip address for hue bridge specified" }
             return false
         }
@@ -91,7 +91,7 @@ class HueService {
     }
 
     private fun findRoom(): Room? {
-        val roomName = Preferences.hueRoomName ?: "Bomb"
+        val roomName = Preferences.hueRoomName
         val roomByName = hue?.getRoomByName(roomName)
         if (roomByName == null) {
             val firstRoom = hue?.getRooms()?.firstOrNull()
