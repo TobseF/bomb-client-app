@@ -87,10 +87,10 @@ class BombService {
             try {
                 val response = httpRequestResult(url, content, type)
                 if (response.statusCode != 200) {
-                    log.error { "Failed access timer on url (code: ${response.statusCode}): $url" }
+                    log.error { "Failed access bomb on url (code: ${response.statusCode}): $url" }
                 }
             } catch (e: Exception) {
-                log.error(e) { "Failed access timer on url: $url[$content]" }
+                log.error(e) { "Failed access bomb on url: $url[$content]" }
             }
         }
     }
