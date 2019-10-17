@@ -10,7 +10,7 @@ The _client app_ can configure the bomb remotely.
 The Bomb runs on an android device. It starts with a countdown before it explodes.
 It's not accessible for the players. Players have to deactivate the bomb with [coding challenges](https://github.com/TobseF/exit-game-coding-challenge).
 The deactivation commands are sent to an REST interface of the [bomb app](https://github.com/TobseF/exit-game-bomb-app).
-### 📦 [Dowload](https://github.com/TobseF/bomb-client-app/releases/latest/download/bomb-client.apk)
+### 📦 [Download](https://github.com/TobseF/bomb-client-app/releases/latest/download/bomb-client.apk)
 
 ## 🚀 Start
 The App runs on Android and Desktop. So you can run, test and develop it without an Android device or emulator.
